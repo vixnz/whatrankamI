@@ -1,0 +1,62 @@
+WINDOWS AUTO-INSTALL PROJECT - CUSTOM LICENSE
+
+Copyright (c) 2025 vixnz
+
+All rights reserved.
+
+TERMS AND CONDITIONS:
+
+1. OWNERSHIP AND COPYRIGHT
+   This software and all associated documentation files (the "Software") are the 
+   exclusive property of vixnz. All rights, title, and interest in and to the 
+   Software remain with vixnz.
+
+2. PERMITTED USE
+   Permission is granted to use this software for:
+   - Personal, non-commercial use
+   - Educational purposes
+   - Learning and experimentation
+   - Internal business operations (single organization only)
+
+3. PROHIBITED ACTIVITIES
+   You may NOT:
+   - Redistribute, sell, lease, or sublicense the Software
+   - Modify and redistribute the Software under any circumstances
+   - Use the Software for commercial redistribution or resale
+   - Remove or alter any copyright notices or this license
+   - Claim authorship or ownership of the Software
+   - Create derivative works for public distribution
+
+4. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+   vixnz BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN 
+   ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+5. LIMITATION OF LIABILITY
+   vixnz SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
+   CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO THE USE 
+   OF OR INABILITY TO USE THE SOFTWARE.
+
+6. COMPLIANCE
+   By using this software, you agree to comply with all applicable laws and 
+   regulations. You are responsible for ensuring that your use of the Software 
+   complies with all relevant Microsoft licensing terms for Windows.
+
+7. TERMINATION
+   This license is effective until terminated. Your rights under this license 
+   will terminate automatically without notice if you fail to comply with any 
+   term of this license.
+
+8. CONTACT
+   For permissions beyond the scope of this license, contact vixnz through the 
+   project repository.
+
+DISCLAIMER: This software will modify system boot configuration and may erase
+data on USB devices and target drives. Users assume all risks associated with
+its use. Always backup important data before use.
+
+By downloading, copying, installing, or using the Software, you agree to be 
+bound by the terms of this license.

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <!-- Windows PE Phase -->
+    <settings pass="windowsPE">
+        <component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <SetupUILanguage>
+                <UILanguage>en-US</UILanguage>
+            </SetupUILanguage>
+            <InputLocale>en-US</InputLocale>
+            <SystemLocale>en-US</SystemLocale>
+            <UILanguage>en-US</UILanguage>
+            <UserLocale>en-US</UserLocale>
+        </component>
+        
+        <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DiskConfiguration>
+                <Disk wcm:action="add">
+                    <DiskID>0</DiskID>
+                    <WillWipeDisk>true</WillWipeDisk>
+                    <CreatePartitions>
+                        <!-- EFI System Partition -->
+                        <CreatePartition wcm:action="add">
+                            <Order>1</Order>
+                            <Type>EFI</Type>
+                            <Size>100</Size>
+                        </CreatePartition>
+                        <!-- Microsoft Reserved Partition -->
+                        <CreatePartition wcm:action="add">
+                            <Order>2</Order>
+                            <Type>MSR</Type>
+                            <Size>16</Size>
+                        </CreatePartition>
+                        <!-- Windows Partition -->
+                        <CreatePartition wcm:action="add">
+                            <Order>3</Order>
+                            <Type>Primary</Type>
+                            <Extend>true</Extend>
+                        </CreatePartition>
+                    </CreatePartitions>
+                    <ModifyPartitions>
+                        <ModifyPartition wcm:action="add">
+                            <Order>1</Order>
+                            <PartitionID>1</PartitionID>
+                            <Label>System</Label>
+                            <Format>FAT32</Format>
+                        </ModifyPartition>
+                        <ModifyPartition wcm:action="add">
+                            <Order>2</Order>
+                            <PartitionID>2</PartitionID>
+                        </ModifyPartition>
+                        <ModifyPartition wcm:action="add">
+                            <Order>3</Order>
+                            <PartitionID>3</PartitionID>
+                            <Label>Windows</Label>
+                            <Letter>C</Letter>
+                            <Format>NTFS</Format>
+                        </ModifyPartition>
+                    </ModifyPartitions>
+                </Disk>
+            </DiskConfiguration>
+            
+            <ImageInstall>
+                <OSImage>
+                    <InstallTo>
+                        <DiskID>0</DiskID>
+                        <PartitionID>3</PartitionID>
+                    </InstallTo>
+                    <WillShowUI>OnError</WillShowUI>
+                    <InstallToAvailablePartition>false</InstallToAvailablePartition>
+                </OSImage>
+            </ImageInstall>
+            
+            <UserData>
+                <ProductKey>
+                    <WillShowUI>OnError</WillShowUI>
+                </ProductKey>
+                <AcceptEula>true</AcceptEula>
+                <FullName>AutoUser</FullName>
+                <Organization>AutoInstall</Organization>
+            </UserData>
+            
+            <EnableFirewall>true</EnableFirewall>
+        </component>
+    </settings>
+    
+    <!-- Specialize Phase -->
+    <settings pass="specialize">
+        <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <InputLocale>en-US</InputLocale>
+            <SystemLocale>en-US</SystemLocale>
+            <UILanguage>en-US</UILanguage>
+            <UserLocale>en-US</UserLocale>
+        </component>
+        
+        <component name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <SkipAutoActivation>true</SkipAutoActivation>
+        </component>
+        
+        <component name="Microsoft-Windows-SQMApi" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <CEIPEnabled>0</CEIPEnabled>
+        </component>
+        
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ComputerName>Windows-Auto</ComputerName>
+            <TimeZone>UTC</TimeZone>
+        </component>
+    </settings>
+    
+    <!-- OOBE System Phase -->
+    <settings pass="oobeSystem">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <OOBE>
+                <HideEULAPage>true</HideEULAPage>
+                <HideLocalAccountScreen>true</HideLocalAccountScreen>
+                <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+                <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+                <NetworkLocation>Home</NetworkLocation>
+                <ProtectYourPC>1</ProtectYourPC>
+                <SkipUserOOBE>true</SkipUserOOBE>
+                <SkipMachineOOBE>true</SkipMachineOOBE>
+            </OOBE>
+            
+            <UserAccounts>
+                <LocalAccounts>
+                    <LocalAccount wcm:action="add">
+                        <Password>
+                            <Value>admin123</Value>
+                            <PlainText>true</PlainText>
+                        </Password>
+                        <Group>Administrators</Group>
+                        <DisplayName>Administrator</DisplayName>
+                        <Name>admin</Name>
+                        <Description>Automatically created administrator account</Description>
+                    </LocalAccount>
+                </LocalAccounts>
+            </UserAccounts>
+            
+            <AutoLogon>
+                <Password>
+                    <Value>admin123</Value>
+                    <PlainText>true</PlainText>
+                </Password>
+                <Enabled>true</Enabled>
+                <LogonCount>1</LogonCount>
+                <Username>admin</Username>
+            </AutoLogon>
+            
+            <FirstLogonCommands>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>powershell.exe -Command "Set-ExecutionPolicy Bypass -Scope LocalMachine -Force"</CommandLine>
+                    <Description>Enable PowerShell execution</Description>
+                    <Order>1</Order>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>powershell.exe -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'WindowsMediaPlayer' -NoRestart"</CommandLine>
+                    <Description>Disable Windows Media Player</Description>
+                    <Order>2</Order>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>powershell.exe -Command "Get-AppxPackage *xbox* | Remove-AppxPackage"</CommandLine>
+                    <Description>Remove Xbox apps</Description>
+                    <Order>3</Order>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>powershell.exe -Command "echo 'Windows installation completed successfully!' > C:\install_complete.txt"</CommandLine>
+                    <Description>Create completion marker</Description>
+                    <Order>4</Order>
+                </SynchronousCommand>
+            </FirstLogonCommands>
+            
+            <RegisteredOrganization>AutoInstall</RegisteredOrganization>
+            <RegisteredOwner>AutoUser</RegisteredOwner>
+            <TimeZone>UTC</TimeZone>
+        </component>
+        
+        <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <InputLocale>en-US</InputLocale>
+            <SystemLocale>en-US</SystemLocale>
+            <UILanguage>en-US</UILanguage>
+            <UserLocale>en-US</UserLocale>
+        </component>
+    </settings>
+</unattend>
